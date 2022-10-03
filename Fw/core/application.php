@@ -4,6 +4,8 @@
  * Application Class
  */
 
+namespace Fw\Core;
+
 class Application
 {
     private $__components = [];

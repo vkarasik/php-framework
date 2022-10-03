@@ -33,3 +33,9 @@ spl_autoload_register(function ($class) {
         require $file;
     }
 });
+
+define('CORE_INIT', true);
+
+use Fw\Core\Application;
+
+$app = Application::getInstance();
