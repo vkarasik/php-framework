@@ -9,10 +9,16 @@ namespace Fw\Core;
 class Application
 {
     private $__components = [];
-    private $pager = null;
+    public $pager = null;
     private $template = null;
 
     use \Fw\Core\Traits\Singleton;
+
+    private function __construct()
+    {
+        $this->pager = Page::getInstance();
+    }
+
 
     public function header()
     {
@@ -35,6 +41,8 @@ class Application
     {
         $content = ob_get_contents();
         $this->restartBuffer();
+        preg_match_all('/(#[a-zA-Z0-9_]+#)/', $content, $arr_mac);
+        echo $this->pager->getAllReplace($arr_mac[0], $content);
     }
 
     private function restartBuffer()
