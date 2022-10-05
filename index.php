@@ -1,9 +1,24 @@
 <?php
-
 require './Fw/init.php';
+$pager = $app->pager;
+$pager->addCss('style.css');
+$pager->addJs('script.js');
+$pager->addJs('script.js');
+$pager->addJs('script.min.js');
+$pager->addString('meta name="viewport" content="width=device-width, initial-scale=1.0"');
+$pager->setProperty('title', 'Main Page Title');
+$pager->setProperty('head', 'Page Head');
+$app->header();
+?>
 
-use Fw\Core\Config;
+<pre>
+--------- 05.10.2022 ---------
+1) Создан класс Page для работы с содержимым html страницы
 
-$config = new Config();
+--------- 04.10.2022 ---------
+1) Создан trait Singleton
+2) Создана структура шаблона сайта
+3) Внедрен буффер
+</pre>
 
-echo $config->get('db/login') . ' : ' . $config->get('db/pass');
+<?php $app->footer(); ?>
