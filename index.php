@@ -12,6 +12,10 @@ $pager->setProperty('head', 'Page Head');
 ?>
 
 <pre>
+--------- 06.10.2022 ---------
+1) Рефакторинг метода Page::getAllReplace()
+2) Рефакторинг методов Page::addJs(), Page::addCss(), Page::addStr()
+
 --------- 05.10.2022 ---------
 1) Создан класс Page для работы с содержимым html страницы
 
