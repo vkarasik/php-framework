@@ -18,22 +18,22 @@ class Page
 
     public function addJs($src)
     {
-        if (!in_array($src, $this->props['js'])) {
-            $this->props['js'][] = $src;
+        if (!isset($this->props['js'][md5($src)])) {
+            $this->props['js'][md5($src)] = "<script src=\"$src\"></script>";
         }
     }
 
     public function addCss($link)
     {
-        if (!in_array($link, $this->props['css'])) {
-            $this->props['css'][] = $link;
+        if (!isset($this->props['css'][md5($link)])) {
+            $this->props['css'][md5($link)] = "<link href=\"$link\" rel=\"stylesheet\">";
         }
     }
 
     public function addString($str)
     {
-        if (!in_array($str, $this->props['tags'])) {
-            $this->props['tags'][] = $str;
+        if (!isset($this->props['tags'][md5($str)])) {
+            $this->props['tags'][md5($str)] = "<$str>";
         }
     }
 
@@ -60,19 +60,8 @@ class Page
 
             // Поле содержит массив путей или тегов
             if (is_array($prop)) {
-                foreach ($prop as $val) {
-                    switch ($key) {
-                        case 'js':
-                            $replacement = "<script src=\"$val\"></script>";
-                            break;
-                        case 'css':
-                            $replacement = "<link href=\"$val\" rel=\"stylesheet\">";
-                            break;
-                        case 'tags':
-                            $replacement = "<$val>";
-                    }
-                    $content = str_replace($macros, $replacement, $content);
-                }
+                $replacement = implode($prop);
+                $content = str_replace($macros, $replacement, $content);
             } else {
                 $content = str_replace($macros, $prop, $content);
             }
