@@ -52,18 +52,17 @@ class Page
         echo '#FW_PAGE_PROPERTY_' . strtoupper($id) . '#';
     }
 
-    public function getAllReplace($arr_mac, $content)
+    public function getAllReplace($content)
     {
-        foreach ($arr_mac as $macros) {
-            $key = strtolower(preg_replace('/#FW_PAGE_?(PROPERTY_)?(.+)#$/', '${2}', $macros));
-            $prop = $this->props[$key];
-
+        foreach ($this->props as $key => $value) {
             // Поле содержит массив путей или тегов
-            if (is_array($prop)) {
-                $replacement = implode($prop);
+            if (is_array($value)) {
+                $macros = '#FW_PAGE_' . strtoupper($key) . '#';
+                $replacement = implode($value);
                 $content = str_replace($macros, $replacement, $content);
             } else {
-                $content = str_replace($macros, $prop, $content);
+                $macros = '#FW_PAGE_PROPERTY_' . strtoupper($key) . '#';
+                $content = str_replace($macros, $value, $content);
             }
         }
         return $content;

@@ -41,8 +41,7 @@ class Application
     {
         $content = ob_get_contents();
         $this->restartBuffer();
-        preg_match_all('/(#[a-zA-Z0-9_]+#)/', $content, $arr_mac);
-        echo $this->pager->getAllReplace($arr_mac[0], $content);
+        echo $this->pager->getAllReplace($content);
     }
 
     private function restartBuffer()
