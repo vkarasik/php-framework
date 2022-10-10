@@ -1,15 +1,10 @@
 <?php
 
-/**
- * Application Class
- */
+namespace Fw\Core\Traits;
 
-class Application
+trait Singleton
 {
     private static $instance = null;
-    private $__components = [];
-    private $pager = null;
-    private $template = null;
 
     private function __construct()
     {
@@ -18,7 +13,7 @@ class Application
     public static function getInstance()
     {
         if (!isset(self::$instance)) {
-            self::$instance = new Application();
+            self::$instance = new static();
         }
         return self::$instance;
     }
