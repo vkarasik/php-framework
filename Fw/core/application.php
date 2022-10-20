@@ -64,4 +64,24 @@ class Application
     {
         return $this->server;
     }
+
+    /**
+     * Подключает компонент и инициализирует его с указанными параметрами
+     * @param string $component namespace:id компонента
+     * @param string $template id шаблона компонента
+     * @param array $params входящие параметры
+     */
+    public function includeComponent($component, $template, $params)
+    {
+        $namespace = explode(':', $component)[0];
+        $id = explode(':', $component)[1];
+        $path = "/components/" . $namespace . "/" . $id;
+        $class = include dirname(__DIR__) . $path . "/class.php";
+
+        if ($class) {
+            $className = str_replace(' ', '', ucwords(str_replace('.', ' ', $id)));
+            $cmpt = new $className($id, $template, $params, $path);
+            $cmpt->executeComponent();
+        }
+    }
 }

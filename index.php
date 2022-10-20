@@ -9,6 +9,15 @@ $pager->addJs('script.min.js');
 $pager->addString('meta name="viewport" content="width=device-width, initial-scale=1.0"');
 $pager->setProperty('title', 'Main Page Title');
 $pager->setProperty('head', 'Page Head');
+$app->includeComponent(
+    'fw:element.list',
+    'default',
+    [
+        "sort" => "id",
+        "limit" => 4,
+        "show_title" => "Y",
+    ]
+);
 ?>
 
 <pre>
@@ -25,4 +34,4 @@ $pager->setProperty('head', 'Page Head');
 3) Внедрен буффер
 </pre>
 
-<?php $app->footer(); ?>
+<?php $app->footer();?>
