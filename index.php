@@ -21,6 +21,11 @@ $app->includeComponent(
 ?>
 
 <pre>
+--------- 20.10.2022 ---------
+1) Создан класс Dictionary
+2) Созданы классы Server и Request
+3) Создан и подключен компонент element.list
+
 --------- 06.10.2022 ---------
 1) Рефакторинг метода Page::getAllReplace()
 2) Рефакторинг методов Page::addJs(), Page::addCss(), Page::addStr()
