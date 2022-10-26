@@ -1,4 +1,6 @@
 <?php
+$params = $this->component->params;
+$result = $this->component->result;
 $limit = $params["limit"];
 $count = 0;
 ?>

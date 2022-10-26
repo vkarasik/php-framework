@@ -1,15 +1,11 @@
 <?php
 use Fw\Core\Component\Base;
-use Fw\Core\Component\Template;
 
 class ElementList extends Base
 {
     public function __construct($id, $template, $params, $path)
     {
-        $this->id = $id;
-        $this->params = $params;
-        $this->path = $path;
-        $this->template = new Template($path, $template);
+        parent::__construct($id, $template, $params, $path);
     }
 
     public function executeComponent()
@@ -37,6 +33,6 @@ class ElementList extends Base
             ],
         );
         $this->result = $arrResult;
-        $this->template->render($this->params, $this->result);
+        $this->template->render();
     }
 }

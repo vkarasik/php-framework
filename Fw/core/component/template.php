@@ -18,26 +18,35 @@ class Template
     public $path = null;
     public $relativePath = null;
     public $id = null;
+    public $component = null;
 
-    public function __construct($path, $id)
+    public function __construct($id, Base $component)
     {
+        $this->component = $component;
         $this->id = $id;
-        $this->relativePath = "/Fw" . $path . "/templates/" . $this->id;
+        $this->relativePath = "/Fw" . $this->component->path . "/templates/" . $this->id;
         $this->path = realpath('.') . $this->relativePath;
     }
 
     /**
      * @param string $page страница подключения в шаблоне
      */
-    public function render($params, $result)
+    public function render($page = 'template')
     {
-        include $this->path . '/result_modifier.php';
-        include $this->path . '/template.php';
-        include $this->path . '/component_epilog.php';
-
-        $app = Application::getInstance();
-        $pager = $app->pager;
-        $pager->addCss($this->relativePath . '/style.css');
-        $pager->addJs($this->relativePath . '/script.js');
+        if (file_exists($this->path . '/result_modifier.php')) {
+            include $this->path . '/result_modifier.php';
+        }
+        if (file_exists($this->path . '/' . $page . '.php')) {
+            include $this->path . '/' . $page . '.php';
+        }
+        if (file_exists($this->path . '/component_epilog.php')) {
+            include $this->path . '/component_epilog.php';
+        }
+        if (file_exists($this->path . '/style.css')) {
+            Application::getInstance()->pager->addCss($this->relativePath . '/style.css');
+        }
+        if (file_exists($this->path . '/script.js')) {
+            Application::getInstance()->pager->addJs($this->relativePath . '/script.js');
+        }
     }
 }

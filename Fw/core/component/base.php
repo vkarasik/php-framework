@@ -20,6 +20,14 @@ abstract class Base
     public $template = null;
     public $path = null;
 
+    public function __construct($id, $template, $params, $path)
+    {
+        $this->id = $id;
+        $this->params = $params;
+        $this->path = $path;
+        $this->template = new Template($template, $this);
+    }
+
     public function executeComponent()
     {
     }

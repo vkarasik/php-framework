@@ -76,12 +76,19 @@ class Application
         $namespace = explode(':', $component)[0];
         $id = explode(':', $component)[1];
         $path = "/components/" . $namespace . "/" . $id;
-        $class = include dirname(__DIR__) . $path . "/class.php";
+        $className = str_replace(' ', '', ucwords(str_replace('.', ' ', $id)));
+        $classFile = dirname(__DIR__) . $path . "/class.php";
 
-        if ($class) {
-            $className = str_replace(' ', '', ucwords(str_replace('.', ' ', $id)));
-            $cmpt = new $className($id, $template, $params, $path);
-            $cmpt->executeComponent();
+        if (!isset($this->__components[$component])) {
+            if (file_exists($classFile)) {
+                $this->__components[$component] = $className;
+                include $classFile;
+            } else {
+                echo "Component doesn't exist!";
+                return;
+            }
         }
+        $cmpt = new $className($id, $template, $params, $path);
+        $cmpt->executeComponent();
     }
 }
