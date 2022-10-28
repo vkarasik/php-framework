@@ -9,9 +9,23 @@ $pager->addJs('script.min.js');
 $pager->addString('meta name="viewport" content="width=device-width, initial-scale=1.0"');
 $pager->setProperty('title', 'Main Page Title');
 $pager->setProperty('head', 'Page Head');
+$app->includeComponent(
+    'fw:element.list',
+    'default',
+    [
+        "sort" => "id",
+        "limit" => 4,
+        "show_title" => "Y",
+    ]
+);
 ?>
 
 <pre>
+--------- 20.10.2022 ---------
+1) Создан класс Dictionary
+2) Созданы классы Server и Request
+3) Создан и подключен компонент element.list
+
 --------- 06.10.2022 ---------
 1) Рефакторинг метода Page::getAllReplace()
 2) Рефакторинг методов Page::addJs(), Page::addCss(), Page::addStr()
@@ -25,4 +39,4 @@ $pager->setProperty('head', 'Page Head');
 3) Внедрен буффер
 </pre>
 
-<?php $app->footer(); ?>
+<?php $app->footer();?>
