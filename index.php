@@ -120,6 +120,10 @@ $app->includeComponent(
 ?>
 
 <pre>
+--------- 31.10.2022 ---------
+1) Подключен Bootstrap
+2) Создан и подключен компонент interface.form
+
 --------- 20.10.2022 ---------
 1) Создан класс Dictionary
 2) Созданы классы Server и Request
