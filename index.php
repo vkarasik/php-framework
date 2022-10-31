@@ -2,8 +2,8 @@
 require './Fw/init.php';
 $pager = $app->pager;
 $app->header();
-$pager->addCss('style.css');
-$pager->addJs('script.js');
+$pager->addCss('https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css');
+$pager->addJs('https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js');
 $pager->addJs('script.js');
 $pager->addJs('script.min.js');
 $pager->addString('meta name="viewport" content="width=device-width, initial-scale=1.0"');
