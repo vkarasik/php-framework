@@ -88,7 +88,7 @@ $app->includeComponent(
             ],
             [
                 'type' => 'radio',
-                'name' => 'remember',
+                'name' => 'options',
                 'additional_class' => 'js-login',
                 'attr' => [
                     'data-id' => '17',
@@ -97,7 +97,7 @@ $app->includeComponent(
             ],
             [
                 'type' => 'radio',
-                'name' => 'remember',
+                'name' => 'options',
                 'additional_class' => 'js-login',
                 'attr' => [
                     'data-id' => '17',
