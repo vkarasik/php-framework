@@ -18,6 +18,105 @@ $app->includeComponent(
         "show_title" => "Y",
     ]
 );
+$app->includeComponent(
+    'fw:interface.form',
+    'default',
+    [
+        'additional_class' => 'window--full-form',
+        'attr' => [
+            'data-form-id' => 'form-123',
+        ],
+        'method' => 'post',
+        'action' => 'send.php',
+        'elements' => [
+            [
+                'type' => 'text',
+                'name' => 'login',
+                'additional_class' => 'js-login',
+                'attr' => [
+                    'data-id' => '17',
+                    'data-class' => '17',
+                ],
+                'title' => 'Логин',
+                'default' => 'Введите имя',
+            ],
+            [
+                'type' => 'password',
+                'name' => 'password',
+                'title' => 'Пароль',
+            ],
+            [
+                'type' => 'number',
+                'name' => 'age',
+                'title' => 'Возраст (18-120)',
+                'max' => 120,
+                'min' => 18,
+            ],
+            [
+                'type' => 'select',
+                'name' => 'server',
+                'additional_class' => 'js-login',
+                'attr' => [
+                    'data-id' => '17',
+                ],
+                'multiple' => false,
+                'title' => 'Выберите сервер',
+                'list' => [
+                    [
+                        'title' => 'Онлайнер',
+                        'value' => 'onliner',
+                        'additional_class' => 'mini--option',
+                        'attr' => [
+                            'data-id' => '188',
+                        ],
+                        'selected' => true,
+                    ],
+                    [
+                        'title' => 'Тутбай',
+                        'value' => 'tut',
+                    ],
+                ],
+            ],
+            [
+                'type' => 'checkbox',
+                'name' => 'remember',
+                'additional_class' => 'js-login',
+                'attr' => [
+                    'data-id' => '17',
+                ],
+                'title' => 'Запомнить меня',
+            ],
+            [
+                'type' => 'radio',
+                'name' => 'remember',
+                'additional_class' => 'js-login',
+                'attr' => [
+                    'data-id' => '17',
+                ],
+                'title' => 'Опция 1',
+            ],
+            [
+                'type' => 'radio',
+                'name' => 'remember',
+                'additional_class' => 'js-login',
+                'attr' => [
+                    'data-id' => '17',
+                ],
+                'title' => 'Опция 2',
+            ],
+            [
+                'type' => 'textarea',
+                'name' => 'description',
+                'additional_class' => 'js-login',
+                'attr' => [
+                    'data-id' => '17',
+                ],
+                'title' => 'Опишите проблему',
+            ],
+
+        ],
+    ]
+);
 ?>
 
 <pre>
